@@ -11,6 +11,9 @@ const Navbar = () => {
   const parsedSignOut = JSON.parse(signOut);
   const isUserSignOut = context.signOut || parsedSignOut;
 
+  const account = localStorage.getItem('account');
+  const parsedAccount = JSON.parse(account);
+
   function handleSignOut() {
     const stringifiedSignOut = JSON.stringify(true);
     localStorage.setItem('sign-out', stringifiedSignOut);
@@ -36,7 +39,7 @@ const Navbar = () => {
       return (
         <>
           <li className='text-black/60'>
-            teff@platzi.com
+            {parsedAccount?.email}
           </li>
           <li>
             <NavLink
